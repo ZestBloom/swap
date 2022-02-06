@@ -1,6 +1,30 @@
-# starter-kit
+# Swap
 
-The NP starter kit describes how to launch a NP RApp in minutes. Quickstart assumes that the local development environment for Reach has been setup.
+Swap is a reach app that locks a x tokens inside a smart contract to swap with another x tokens.
+
+## Activation
+
+0.35 ALGO
+
+## Participants
+### Auctioneer
+Alice sets the swap params.
+### Depositor
+Depositor is whomever deposits token a.
+
+## Views
+None
+## API
+### swap
+Give token b. Receive token a.
+### close
+Assuming remaining token a is 0, then anyone may close teh app.
+
+## Steps
+
+1. Alice comes along
+1. Depositor comes along
+1. Api (swap|close)
 
 ## quickstart
 
