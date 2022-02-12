@@ -1,6 +1,6 @@
 # Swap
 
-Swap is a reach app that locks a x tokens inside a smart contract to swap with another x tokens.
+Swap allows swapping of two assets.
 
 ## Activation
 
