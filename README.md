@@ -22,9 +22,10 @@ Assuming remaining token a is 0, then anyone may close teh app.
 
 ## Steps
 
-1. Alice comes along
-1. Depositor comes along
-1. Api (swap|close)
+1. Alice comes along and reveals amount, tokA, and tokB
+1. Depositor comes along deposits amount of tokA
+1. Api (swap) allows from from tokB to tokA until amount remaining is zero
+2. Api (close) allows contract to be closed to Depositor if balance of tokA is zero
 
 ## quickstart
 
