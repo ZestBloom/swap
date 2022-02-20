@@ -1,6 +1,6 @@
-compile () {
+compile () { 
         REACH_VERSION=0.1.7 ./reach compile ${infile:-index}.rsh --install-pkgs
-        REACH_VERSION=0.1.7 ./reach compile ${infile:-index}.rsh
+        REACH_VERSION=0.1.7 ./reach compile ${infile:-index}.rsh "${@}"
 }
 connector () {
         local i=$( grep -n ${1} -e _ALGO | head -1 | cut '-d:' '-f1' ) 
