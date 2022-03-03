@@ -4,7 +4,7 @@ Swap allows swapping of two assets.
 
 ## Activation
 
-0.35 ALGO
+0.25 ALGO
 
 ## Participants
 ### Auctioneer
