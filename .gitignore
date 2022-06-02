@@ -1,3 +1,5 @@
 reach
 .reach
 build
+*.sh
+.env

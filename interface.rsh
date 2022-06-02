@@ -34,14 +34,13 @@ export const Api = () => [
   }),
 ];
 export const App = (map) => {
-  const [_, { tok }, [Alice, Depositor], [v], [a]] = map;
+  const [[/*master*/_, /*constructor*/_, /*contractee*/addr], [Alice, Depositor], [v], [a]] = map;
   Alice.only(() => {
     const { amount, exchange, tokA, tokB } = declassify(interact.getParams());
     assume(amount > 0);
     assume(amount % exchange == 0);
-    assume(tok != tokA);
-    assume(tok != tokB);
-    assume(tokA != tokB);
+    assume(distinct(tokA, tokB));
+    assume(this === addr);
   });
   Alice.publish(amount, exchange, tokA, tokB);
   commit();
@@ -50,16 +49,14 @@ export const App = (map) => {
   Depositor.only(() => interact.signal());
   require(amount > 0);
   require(amount % exchange == 0);
-  require(tok != tokA);
-  require(tok != tokB);
-  require(tokA != tokB);
+  require(distinct(tokA, tokB));
+  require(Alice === addr);
   const [keepGoing, remaining] = parallelReduce([true, amount])
     .define(() => {
       v.remaining.set(remaining);
     })
     .invariant(
       balance() >= 0 &&
-        balance(tok) == 0 &&
         balance(tokA) >= 0 &&
         balance(tokB) >= 0
     )
@@ -88,7 +85,6 @@ export const App = (map) => {
     )
     .timeout(false);
   transfer(balance()).to(Depositor);
-  transfer(balance(tok), tok).to(Depositor);
   transfer(balance(tokA), tokA).to(Depositor);
   transfer(balance(tokB), tokB).to(Depositor);
   commit();
